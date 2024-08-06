@@ -27,6 +27,22 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem "devise"
+#kullanıcı girisi icin
+#
+gem 'carrierwave'
+
+
+#carrierwave: Bu gem, dosya yükleme ve yönetimi için kullanılır. 
+#CarrierWave, dosyaları yüklemek, saklamak ve gerektiğinde dönüştürmek için çeşitli özellikler sunar. 
+#Kullanıcıların projelerine kolayca dosya yükleme yeteneği eklemelerini sağlar.
+
+
+
+gem 'mini_magick'
+
+#Bu gem, resim işleme için kullanılır ve CarrierWave ile birlikte kullanılabilir. 
+#MiniMagick, ImageMagick'in daha hafif bir sürümü olan MiniMagick kütüphanesini kullanarak resimlerin boyutlarını değiştirme, kırpma, dönüştürme gibi işlemleri yapar.
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
