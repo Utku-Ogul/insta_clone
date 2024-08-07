@@ -12,17 +12,18 @@
 
 <h1>Posts</h1>
 
-<%= link_to 'New Post', new_post_path %>
+<%=link_to 'New Post', new_post_path %>
 
 <% @posts.reverse.each do |post| %>
-    <div>----------------------------------------------------------------------------------------</div>
     <div class="post">
-        <h2>USER NAME: <%= current_user.user_name %></h2>
+            <h2><%=image_tag post.user.profil_photo.url %> <%= post.user.user_name %></h2>
         <% if post.image.present? %>
-        <%= image_tag post.image.url, alt: "Post Image" %>
+            <%= image_tag post.image.url, alt: "Post Image" %>
+        <%else%>
+            <%= image_tag('default_profile_photo.jpg') %> <%#buraya foto atancak yüklü foto yoksa burası oromatik atayacak%>
         <% end %>
-        <p>Description: <%= truncate(post.description, length: 100) %></p>
-        <%= link_to 'Read more', post_path(post) %>
+        <p>Description: <%= truncate(post.description) %></p>
+        <%= link_to 'Read More', post_path(post) %>
     </div>
     <div>----------------------------------------------------------------------------------------</div>
 

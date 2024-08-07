@@ -66,8 +66,8 @@ class User::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:user_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:user_name, :profil_photo])
   end
 
   #Bu metod, Devise’ın kullanıcı kayıt ve güncelleme işlemlerinde user_name gibi ek verileri kabul edebilmesi için gerekli ayarları yapar. Bu ekleme olmadan, Devise yalnızca varsayılan parametreleri kabul eder ve ek parametreler kaydedilmez veya güncellenmez.
