@@ -3,20 +3,19 @@
 <div>
     <%if user_signed_in?%>
        <p>Welcome, <%= current_user.user_name %>!</p>
-        <%= link_to "Profile", edit_user_registration_path%>
+        <%= button_to "Profile", edit_user_registration_path, method: :get %> <%# Profil düzenleme sayfasına yönlendirir %>
     <%end%>
 
-    <%= button_to "Log Out", destroy_user_session_path, method: :delete%>
-
+    <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
 </div>
 
 <h1>Posts</h1>
 
-<%=link_to 'New Post', new_post_path %>
+<%= button_to 'New Post', new_post_path, method: :get %>
 
 <% @posts.reverse.each do |post| %>
     <div class="post">
-            <h2><%=image_tag post.user.profil_photo.url %> <%= post.user.user_name %></h2>
+        <h2><%= image_tag post.user.profil_photo.url %> <%= post.user.user_name %></h2>
         <% if post.image.present? %>
             <%= image_tag post.image.url, alt: "Post Image" %>
         <% end %>
@@ -24,17 +23,15 @@
 
         <% if post.comments.any? %>
             <div class="comments">
-                        <% post.comments.sort_by(&:created_at).reverse.take(3).each do |comment| %>
-                        <p>
-                          <strong><%= comment.user.user_name %>:</strong> <%= comment.content %>
-
-                        </p>
+                <% post.comments.sort_by(&:created_at).reverse.take(3).each do |comment| %>
+                    <p>
+                        <strong><%= comment.user.user_name %>:</strong> <%= comment.content %>
+                    </p>
                 <% end %>
             </div>
         <% end %>
 
-        <%= link_to 'Read More', post_path(post) %>
+        <%= button_to 'Read More', post_path(post), method: :get %>
     </div>
     <div>----------------------------------------------------------------------------------------</div>
-
 <% end %>
