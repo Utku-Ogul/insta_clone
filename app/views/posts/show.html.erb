@@ -4,6 +4,10 @@
    <%= current_user.user_name%>
 </p>
 
+<p>
+   <strong>Profile Photo:</strong>
+   <%= image_tag @post.user.profil_photo.url if @post.user.profil_photo.present? %>
+</p>
 
 <p>
   <strong>Description:</strong>
@@ -17,7 +21,12 @@
 
 <h2>Yorumlar</h2>
 <% @post.comments.each do |comment| %>
-  <p><strong><%= comment.user.email %>:</strong> <%= comment.content %></p>
+  <p>
+    <strong><%= comment.user.email %>:</strong> <%= comment.content %>
+    <% if comment.user == current_user %>
+      <%= link_to 'Düzenle', edit_post_comment_path(@post, comment) %>
+    <% end %>
+  </p>
 <% end %>
 
 
