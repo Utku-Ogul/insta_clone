@@ -6,14 +6,9 @@
   </div>
   <div class="actions">
     <%= form.submit "Yorumu Güncelle" %>
-
-    <% if @comment.user == current_user %> 
-        <%= form_with(model: [@post, @comment], method: :delete, local: true) do |form| %>
-            <div class="actions">
-                <%= form.submit "Yorumu Sil", data: { confirm: "Bu yorumu silmek istediğinize emin misiniz?" }, class: "button" %>
-            </div>
-        <% end %>
-
-    <% end %>
   </div>
+<% end %>
+
+<% if @comment.user == current_user %> 
+  <%= button_to "Yorumu Sil", [@post, @comment], method: :delete, data: { confirm: "Bu yorumu silmek istediğinize emin misiniz?" }, class: "button" %>
 <% end %>
