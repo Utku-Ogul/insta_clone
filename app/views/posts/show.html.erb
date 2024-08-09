@@ -20,9 +20,9 @@
 </p>
 
 <h2>Yorumlar</h2>
-<% @post.comments.each do |comment| %>
+<% @post.comments.reverse.each do |comment| %>
   <p>
-    <strong><%= comment.user.email %>:</strong> <%= comment.content %>
+    <strong><%= comment.user.user_name %>:</strong> <%= comment.content %>
     <% if comment.user == current_user %>
       <%= link_to 'Düzenle', edit_post_comment_path(@post, comment) %>
     <% end %>
