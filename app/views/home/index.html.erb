@@ -1,37 +1,50 @@
-<h1>Ana sayfa</h1>
 
-<div>
-    <%if user_signed_in?%>
-       <p>Welcome, <%= current_user.user_name %>!</p>
-        <%= button_to "Profile", edit_user_registration_path, method: :get %> <%# Profil düzenleme sayfasına yönlendirir %>
-    <%end%>
+<div style="float: left;">
 
-    <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
-</div>
+            <h1>Ana sayfa</h1>
 
-<h1>Posts</h1>
-
-<%= button_to 'New Post', new_post_path, method: :get %>
-
-<% @posts.reverse.each do |post| %>
-    <div class="post">
-        <h2><%= image_tag post.user.profil_photo.url %> <%= post.user.user_name %></h2>
-        <% if post.image.present? %>
-            <%= image_tag post.image.url, alt: "Post Image" %>
-        <% end %>
-        <p>Description: <%= truncate(post.description) %></p>
-
-        <% if post.comments.any? %>
-            <div class="comments">
-                <% post.comments.sort_by(&:created_at).reverse.take(3).each do |comment| %>
-                    <p>
-                        <strong><%= comment.user.user_name %>:</strong> <%= comment.content %>
-                    </p>
-                <% end %>
+            <div>
+                <%if user_signed_in?%>
+                <p>Welcome, <%= current_user.user_name %>!</p>
             </div>
-        <% end %>
+</div>
+    <div style="float: right;">
+                    <%= button_to "Profile", edit_user_registration_path, method: :get %> <%# Profil düzenleme sayfasına yönlendirir %>
+                <%end%>
 
-        <%= button_to 'Read More', post_path(post), method: :get %>
+                <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
     </div>
-    <div>----------------------------------------------------------------------------------------</div>
-<% end %>
+
+<div class="container">
+
+
+    <h1>Posts</h1>
+
+    <%= button_to 'New Post', new_post_path, method: :get %>
+
+    <% @posts.reverse.each do |post| %>
+        <div class="post">
+            <div class= "rounded-border">
+                <h2><%= image_tag post.user.profil_photo.url %></h2>
+                <h2 style= "margin-left: 10px"><%= post.user.user_name %></h2>
+            </div>
+            <% if post.image.present? %>
+                <%= image_tag post.image.url, alt: "Post Image" %>
+            <% end %>
+            <p>Description: <%= truncate(post.description) %></p>
+
+            <% if post.comments.any? %>
+                <div class="comments">
+                    <% post.comments.sort_by(&:created_at).reverse.take(3).each do |comment| %>
+                        <p>
+                            <strong><%= comment.user.user_name %>:</strong> <%= comment.content %>
+                        </p>
+                    <% end %>
+                </div>
+            <% end %>
+
+            <%= button_to 'Read More', post_path(post), method: :get %>
+        </div>
+        <div>----------------------------------------------------------------------------------------</div>
+    <% end %>
+</div>

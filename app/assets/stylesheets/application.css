@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+ .container {
+    max-width: 800px; /* Maksimum genişliği belirle */
+    margin: 0 auto; /* Ortalamak için kenar boşluklarını otomatik yap */
+    text-align: center; /* İçeriği ortalamak için text-align */
+  }
+  
+  .post {
+    margin-bottom: 20px; /* Postlar arasında boşluk bırak */
+  }
+  
+  button {
+    margin-top: 10px; /* Butonların üstünde biraz boşluk bırak */
+  }
+  
+
+  .rounded-border img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid rgb(210, 12, 12);
+  }
+
+  .rounded-border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5rem;
+  }
