@@ -19,26 +19,26 @@
   <%= image_tag @post.image.url if @post.image? %>
 </p>
 
-<h2>Yorumlar</h2>
+<h2>Comments</h2>
 <% @post.comments.reverse.each do |comment| %>
   <p>
     <strong><%= comment.user.user_name %>:</strong> <%= comment.content %>
     <% if comment.user == current_user %>
-      <%= button_to 'Düzenle', edit_post_comment_path(@post, comment), method: :get %>
+      <%= button_to 'Edit', edit_post_comment_path(@post, comment), method: :get %>
 
     <% end %>
   </p>
 <% end %>
 
 
-<h2>Yorum Yap</h2>
+<h2>Leave a comment</h2>
 <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
   <div class="actions">
-    <%= form.submit "Yorum Yap" %>
+    <%= form.submit "Send" %>
   </div>
 <% end %>
 
